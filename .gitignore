@@ -15,8 +15,12 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Éventuels modèles sauvegardés ou gros fichiers de données
-*.h5
-*.keras
-*.pkl
+# Modèles et fichiers lourds n'importe où dans le projet
+**/*.h5
+**/*.keras
+**/*.tflite
+**/*.pkl
 enonces.zip
+
+# Corrigés types n'importe où
+**/kt_*
