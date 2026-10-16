@@ -1,0 +1,22 @@
+# Environnement virtuel
+venv/
+env/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Caches et fichiers compilés Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Éventuels modèles sauvegardés ou gros fichiers de données
+*.h5
+*.keras
+*.pkl
+enonces.zip
