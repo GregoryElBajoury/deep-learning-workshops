@@ -21,6 +21,7 @@ Thumbs.db
 **/*.tflite
 **/*.pkl
 enonces.zip
+site/
 
 # Corrigés types n'importe où
 **/kt_*
