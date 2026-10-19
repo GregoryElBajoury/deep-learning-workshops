@@ -25,7 +25,7 @@
     
     
       
-        <title>TP1 - Régression - Deep Learning Workshops - Promotion</title>
+        <title>TP1 - Régression - Réseaux de neurones - concevoir, évaluer, optimiser, alléger et préparer du texte, et déployer son modèle</title>
       
     
     
@@ -94,7 +94,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="Deep Learning Workshops - Promotion" class="md-header__button md-logo" aria-label="Deep Learning Workshops - Promotion" data-md-component="logo">
+    <a href="../.." title="Réseaux de neurones - concevoir, évaluer, optimiser, alléger et préparer du texte, et déployer son modèle" class="md-header__button md-logo" aria-label="Réseaux de neurones - concevoir, évaluer, optimiser, alléger et préparer du texte, et déployer son modèle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +108,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Deep Learning Workshops - Promotion
+            Réseaux de neurones - concevoir, évaluer, optimiser, alléger et préparer du texte, et déployer son modèle
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -292,13 +292,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Deep Learning Workshops - Promotion" class="md-nav__button md-logo" aria-label="Deep Learning Workshops - Promotion" data-md-component="logo">
+    <a href="../.." title="Réseaux de neurones - concevoir, évaluer, optimiser, alléger et préparer du texte, et déployer son modèle" class="md-nav__button md-logo" aria-label="Réseaux de neurones - concevoir, évaluer, optimiser, alléger et préparer du texte, et déployer son modèle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Deep Learning Workshops - Promotion
+    Réseaux de neurones - concevoir, évaluer, optimiser, alléger et préparer du texte, et déployer son modèle
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -1381,10 +1381,14 @@
 <p>Contrairement à la classification binaire (où la dernière couche utilise une fonction d'activation <code>sigmoid</code> pour forcer la sortie entre 0 et 1) :</p>
 <ol>
 <li><strong>Pas d'activation sur la dernière couche</strong> : La couche de sortie comporte un seul neurone <strong>sans fonction d'activation</strong>, car elle doit pouvoir prédire <em>n'importe quel nombre réel</em> (positif ou négatif).</li>
-<li><strong>La fonction de perte (Loss) : La MSE (Mean Squared Error)</strong> : </li>
-<li><strong>Éclairage théorique</strong> : On calcule la moyenne des carrés des écarts entre les valeurs réelles et les prédictions. Élever au carré pénalise très fortement les grosses erreurs, poussant le réseau à se corriger rapidement.</li>
-<li><strong>La métrique : La MAE (Mean Absolute Error)</strong> : </li>
-<li>Contrairement à la MSE, la MAE mesure l'erreur absolue moyenne (sans mise au carré), ce qui est beaucoup plus intuitif à interpréter directement dans l'unité de la variable cible <code>y</code>.</li>
+<li>
+<p><strong>La fonction de perte (Loss) : La MSE (Mean Squared Error)</strong> :</p>
+<p><strong>Éclairage théorique</strong> : On calcule la moyenne des carrés des écarts entre les valeurs réelles et les prédictions. Élever au carré pénalise très fortement les grosses erreurs, poussant le réseau à se corriger rapidement.</p>
+</li>
+<li>
+<p><strong>La métrique : La MAE (Mean Absolute Error)</strong> :</p>
+<p>Contrairement à la MSE, la MAE mesure l'erreur absolue moyenne (sans mise au carré), ce qui est beaucoup plus intuitif à interpréter directement dans l'unité de la variable cible <span class="arithmatex">\(y\)</span>.</p>
+</li>
 </ol>
 <h3 id="larme-secrete-la-fonction-dactivation-relu">L'arme secrète : La fonction d'activation ReLU</h3>
 <p>Dans les couches cachées, l'utilisation de <code>activation="relu"</code> (Rectified Linear Unit, <span class="arithmatex">\(f(x) = \max(0, x)\)</span>) est fondamentale. C'est elle qui casse la linéarité : en combinant des morceaux de droites, le réseau parvient à "sculpter" une courbe capable d'épouser le signal sinusoïdal.</p>
