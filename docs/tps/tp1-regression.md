@@ -259,7 +259,142 @@ print("Dictionnaire des résultats (R²) :", resultats)
 * **4 neurones** ($R^2 \approx 0.86$) : La courbe commence à s'articuler et à suivre grossièrement la forme générale.
 * **32 & 256 neurones** ($R^2 \approx 0.93$) : Le réseau dispose de suffisamment de segments linéaires combinés pour sculpter une courbe fluide qui épouse parfaitement la tendance des données. Au-delà, ajouter encore plus de neurones (256) n'apporte plus de gain significatif sur ce type de signal simple.
 
-## 8. Conclusion & Mot de la fin
+
+
+## 8. Étape 10 — Expérience : Trop peu de données (Surapprentissage)
+
+Cette fois c'est l'inverse : on utilise un **gros réseau** (2 couches de 256 neurones) mais avec **très peu de données**. Il peut alors mémoriser chaque point, bruit compris : c'est le **surapprentissage** (*overfitting*)[cite: 10].
+
+### Le protocole expérimental
+N'utilisez que les **15 premiers points** de `x_train` / `y_train`. Entraînez le gros réseau **500 epochs** (batch 8). Calculez `r2_train` (sur ces 15 points) et `r2_test` (sur tout le test), puis tracez la courbe prédite[cite: 10].
+
+> 💡 **Indice** : Découpez avec `x_train[:15]`. Comparez les deux $R^2$ : que valent-ils chacun ?[cite: 10]
+
+```python
+# Calcul de r2_train et r2_test avec seulement 15 points
+x_train_15 = x_train[:15]
+y_train_15 = y_train[:15]
+
+keras.utils.set_random_seed(42)
+
+modele_overfit = keras.Sequential([
+    layers.Input(shape=(1,)),
+    layers.Dense(256, activation="relu"),
+    layers.Dense(256, activation="relu"),
+    layers.Dense(1)
+])
+
+modele_overfit.compile(optimizer="adam", loss="mse")
+modele_overfit.fit(x_train_15, y_train_15, epochs=500, batch_size=8, verbose=0)
+
+y_pred_train_15 = modele_overfit.predict(x_train_15, verbose=0).ravel()
+r2_train = r2_score(y_train_15, y_pred_train_15)
+
+y_pred_test = modele_overfit.predict(x_test, verbose=0).ravel()
+r2_test = r2_score(y_test, y_pred_test)
+
+print(f"R² sur les 15 points d'entraînement : {r2_train:.3f}")
+print(f"R² sur le test : {r2_test:.3f}")
+
+# Traçage
+plt.figure(figsize=(7, 4))
+plt.scatter(x_train_15, y_train_15, color="green", label="15 points d'entraînement", zorder=5)
+plt.scatter(x_test, y_test, color="blue", s=10, label="points de test", alpha=0.4)
+
+xs = np.linspace(-3, 3, 300).reshape(-1, 1)
+plt.plot(xs, modele_overfit.predict(xs, verbose=0), color="red", label="réseau (surapprentissage)")
+plt.plot(xs, np.sin(xs), "--", color="gray", label="vraie courbe")
+
+plt.title(f"Surapprentissage | R² train = {r2_train:.2f} — R² test = {r2_test:.2f}")
+plt.legend(fontsize=8)
+plt.show()
+```
+![Résultat](../assets/img8.png)
+
+
+❓ **Question** : Comparez $R^2$ d'entraînement et $R^2$ de test. Que vous dit l'écart ? Que faudrait-il pour le réduire ?  
+*Réponse* : Le $R^2$ d'entraînement (0.97) est supérieur au $R^2$ de test (0.79), ce qui met en évidence un surapprentissage : le modèle a mémorisé les points d'entraînement spécifiques au lieu de généraliser. Pour réduire cet écart, il faudrait augmenter la quantité de données d'entraînement ou intégrer des techniques de régularisation.  
+
+---
+
+## 9. Étape 11 — Sur des données réelles : La progression du diabète
+
+Reprenons toute la démarche sur un vrai jeu de données : `load_diabetes` (442 patients, 10 mesures médicales, cible = indice de progression de la maladie). Ici les 10 colonnes ont des échelles différentes : il faut les **mettre à l'échelle**, en calculant la moyenne et l'écart-type **sur l'apprentissage seul**.  
+
+### Le protocole expérimental
+1. Découpez (20 % de test, `random_state=42`) vers `Xd_train`, `Xd_test`, `yd_train`, `yd_test`.  
+2. Standardisez (`StandardScaler` : `fit` sur train, `transform` sur train et test).  
+3. Régression linéaire $\rightarrow$ `r2_lin_d`.  
+4. Réseau **16 puis 8 neurones**, 150 epochs max, batch 16, validation 20 %, **arrêt précoce** (patience 15, `restore_best_weights=True`) $\rightarrow$ `r2_res_d`.  
+
+```python
+from sklearn.datasets import load_diabetes
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+
+diabetes = load_diabetes()
+Xd_d, yd_d = diabetes.data, diabetes.target
+
+Xd_train, Xd_test, yd_train, yd_test = train_test_split(Xd_d, yd_d, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+Xd_train_scaled = scaler.fit_transform(Xd_train)
+Xd_test_scaled = scaler.transform(Xd_test)
+
+# 1. Modèle linéaire de référence
+modele_lin_d = LinearRegression()
+modele_lin_d.fit(Xd_train_scaled, yd_train)
+yd_pred_lin = modele_lin_d.predict(Xd_test_scaled)
+r2_lin_d = r2_score(yd_test, yd_pred_lin)
+
+# 2. Réseau de neurones avec EarlyStopping
+keras.utils.set_random_seed(42)
+
+modele_res_d = keras.Sequential([
+    layers.Input(shape=(Xd_train_scaled.shape[1],)),
+    layers.Dense(16, activation="relu"),
+    layers.Dense(8, activation="relu"),
+    layers.Dense(1) # Sortie unique pour la régression
+])
+
+modele_res_d.compile(optimizer="adam", loss="mse")
+
+early_stopping = keras.callbacks.EarlyStopping(
+    monitor="val_loss",
+    patience=15,
+    restore_best_weights=True
+)
+
+modele_res_d.fit(
+    Xd_train_scaled, yd_train,
+    epochs=150,
+    batch_size=16,
+    validation_split=0.2,
+    callbacks=[early_stopping],
+    verbose=0
+)
+
+yd_pred_res = modele_res_d.predict(Xd_test_scaled, verbose=0).ravel()
+r2_res_d = r2_score(yd_test, yd_pred_res)
+
+print(f"Score R² de la régression linéaire : {r2_lin_d:.3f}")
+print(f"Score R² du réseau de neurones : {r2_res_d:.3f}")
+```
+![Résultat](../assets/img9.png)
+
+**Question** : Le réseau bat-il nettement la régression linéaire ? Pourquoi l'avantage est-il faible sur ce jeu ?
+
+  *Réponse* : Non, le réseau ne bat pas nettement la régression linéaire, les scores $R^2$ étant très proches (environ 0.45 contre 0.46). Cet avantage minime s'explique par le fait que les relations dans ce jeu de données médical sont en grande partie linéaires, et que la taille restreinte de l'échantillon ne permet pas à un réseau de neurones de surperformer massivement.
+
+---
+
+## Ce qu'il faut retenir
+
+* **Régression** = prédire un nombre : sortie sans activation, perte MSE, mesures MAE / RMSE / $R^2$.  
+* Le **$R^2$** se lit par rapport à une référence : $0$ = pas mieux que la moyenne, $1$ = parfait. Comparez **toujours** à une méthode simple.  
+* **Trop petit** = sous-apprentissage ; **trop gros pour trop peu de données** = surapprentissage.
+
+## 10. Conclusion & Mot de la fin
 
 Ce TP illustre à merveille le changement de paradigme entre les statistiques traditionnelles et le Deep Learning :
 
