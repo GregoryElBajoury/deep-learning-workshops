@@ -406,5 +406,5 @@ Ce TP illustre à merveille le changement de paradigme entre les statistiques tr
 1. **De la ligne globale au sur-mesure local** : Alors qu'une régression linéaire cherche une contrainte globale rigide (une droite), le réseau de neurones combine des fonctions non-linéaires pour modeler une courbe au plus près de la complexité des données réelles.
 2. **Le piège de la complexité (Overfitting)** : Si l'on avait donné une architecture démesurée (ex: des centaines de neurones) à ce petit jeu de données bruité, le réseau aurait pu faire du *sur-apprentissage* (apprendre le bruit aléatoire par cœur au lieu de capter la tendance générale du sinus). Tout l'art du Deep Learning réside dans cet équilibre subtil entre la capacité du modèle et la quantité/qualité des données disponibles.
 
->  **Ressource associée** : Tu peux retrouver et télécharger le notebook complet de ce TP directement sur GitHub : 
+>  **Ressource associée** : Tu peux retrouver et télécharger le notebook complet de ce TP directement sur GitHub :
 > 👉 <a href="https://github.com/GregoryElBajoury/deep-learning-workshops/blob/main/enonces/ENONCES/tp1_regression.ipynb" target="_blank" rel="noopener noreferrer">Accéder au notebook<code>tp1_regression.ipynb</code></a>
