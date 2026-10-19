@@ -1,0 +1,60 @@
+site_name: "Deep Learning Workshops - Promotion"
+site_description: "Carnet de bord, cours et ateliers pratiques de Machine & Deep Learning"
+site_author: "Gregory"
+
+theme:
+  name: material
+  language: fr
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Passer au mode sombre
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Passer au mode clair
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search:
+      lang: fr
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Accueil: index.md
+  - Cours & Ateliers (TPs):
+    - TP1 - Régression: tps/tp1-regression.md
+    - TP2 - Classification Binaire: tps/tp2-classification.md
+    - TP3 - Classification Multiclasses: tps/tp3-multiclasses.md
+    - TP4 - CNN (Vision): tps/tp4-cnn.md
+    - TP5 - Régularisation: tps/tp5-regularisation.md
+    - TP6 - Hyperparamètres & Compression: tps/tp6-hyperparametres.md
+    - TP7 - NLP & Texte: tps/tp7-nlp.md
+  - Le Défi :
+    - Défi Moons: defi-moons.md
+
+extra_css:
+  - stylesheets/extra.css
