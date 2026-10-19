@@ -90,13 +90,14 @@ print("Score R² de la droite :", round(r2_lineaire, 3))
 Contrairement à la classification binaire (où la dernière couche utilise une fonction d'activation `sigmoid` pour forcer la sortie entre 0 et 1) :
 
 1. **Pas d'activation sur la dernière couche** : La couche de sortie comporte un seul neurone **sans fonction d'activation**, car elle doit pouvoir prédire *n'importe quel nombre réel* (positif ou négatif).
-2. **La fonction de perte (Loss) : La MSE (Mean Squared Error)** :
-
-    **Éclairage théorique** : On calcule la moyenne des carrés des écarts entre les valeurs réelles et les prédictions. Élever au carré pénalise très fortement les grosses erreurs, poussant le réseau à se corriger rapidement.
-
-3. **La métrique : La MAE (Mean Absolute Error)** :
-
-    Contrairement à la MSE, la MAE mesure l'erreur absolue moyenne (sans mise au carré), ce qui est beaucoup plus intuitif à interpréter directement dans l'unité de la variable cible $y$.
+   
+3. **La fonction de perte (Loss) : La MSE (Mean Squared Error)** :
+   
+    * **Éclairage théorique** : On calcule la moyenne des carrés des écarts entre les valeurs réelles et les prédictions. Élever au carré pénalise très fortement les grosses erreurs, poussant le réseau à se corriger rapidement.
+      
+5. **La métrique MAE (Mean Absolute Error)** :
+   
+    * Contrairement à la MSE, la MAE mesure l'erreur absolue moyenne (sans mise au carré), ce qui est beaucoup plus intuitif à interpréter directement dans l'unité de la variable cible $y$.
 
 ###  L'arme secrète : La fonction d'activation ReLU
 Dans les couches cachées, l'utilisation de `activation="relu"` (Rectified Linear Unit, $f(x) = \max(0, x)$) est fondamentale. C'est elle qui casse la linéarité : en combinant des morceaux de droites, le réseau parvient à "sculpter" une courbe capable d'épouser le signal sinusoïdal.
