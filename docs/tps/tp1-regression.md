@@ -200,9 +200,71 @@ plt.show()
 
 ---
 
-## 7. Conclusion & Mot de la fin
+---
+
+## 7. Étape 9 — Expérience : Combien de neurones faut-il ?
+
+Un réseau trop petit ne peut pas suivre la courbe : c'est le **sous-apprentissage** (*underfitting*). Mesurons-le en faisant varier le nombre de neurones dans une unique couche cachée.
+
+### Le protocole expérimental
+Pour des réseaux à une seule couche cachée de **1, 4, 32 puis 256 neurones** (avec 200 epochs, un batch size de 32, et sans validation), on calcule le score $R^2$ sur le jeu de test et on stocke le tout dans un dictionnaire `resultats`[cite: 9].
+
+```python
+resultats = {}
+plt.figure(figsize=(14, 3.5))
+
+neurones_list = [1, 4, 32, 256]
+
+for i, n in enumerate(neurones_list):
+    # Fixer la graine à chaque tour pour comparer à armes égales
+    keras.utils.set_random_seed(42)
+    
+    # Construction dynamique du modèle avec 'n' neurones
+    modele_exp = keras.Sequential([
+        layers.Input(shape=(1,)),
+        layers.Dense(n, activation="relu"),
+        layers.Dense(1)
+    ])
+    
+    modele_exp.compile(optimizer="adam", loss="mse")
+    
+    # Entraînement (200 epochs, sans validation)
+    modele_exp.fit(x_train, y_train, epochs=200, batch_size=32, verbose=0)
+    
+    # Évaluation sur le test
+    y_pred_exp = modele_exp.predict(x_test, verbose=0).ravel()
+    score_r2 = r2_score(y_test, y_pred_exp)
+    resultats[n] = score_r2
+    
+    # Traçage des courbes côte à côte
+    plt.subplot(1, 4, i + 1)
+    plt.scatter(x_test, y_test, s=8, label="test", color="blue")
+    
+    xs = np.linspace(-3, 3, 300).reshape(-1, 1)
+    plt.plot(xs, modele_exp.predict(xs, verbose=0), color="red", label="réseau")
+    
+    plt.title(f"{n} neurone(s)\nR² = {score_r2:.2f}")
+    plt.legend(loc="upper left", fontsize=8)
+
+plt.tight_layout()
+plt.show()
+
+print("Dictionnaire des résultats (R²) :", resultats)
+```
+![Résultat](../assets/img7.png)
+
+**Analyse des graphiques obtenus** :
+
+* **1 neurone** ($R^2 \approx 0.59$) : Le réseau se résume à deux morceaux de droites assemblés (effet ReLU). C'est beaucoup trop simple pour épouser la vague sinusoïdale : on observe un net **sous-apprentissage**.
+* **4 neurones** ($R^2 \approx 0.86$) : La courbe commence à s'articuler et à suivre grossièrement la forme générale.
+* **32 & 256 neurones** ($R^2 \approx 0.93$) : Le réseau dispose de suffisamment de segments linéaires combinés pour sculpter une courbe fluide qui épouse parfaitement la tendance des données. Au-delà, ajouter encore plus de neurones (256) n'apporte plus de gain significatif sur ce type de signal simple.
+
+## 8. Conclusion & Mot de la fin
 
 Ce TP illustre à merveille le changement de paradigme entre les statistiques traditionnelles et le Deep Learning :
 
 1. **De la ligne globale au sur-mesure local** : Alors qu'une régression linéaire cherche une contrainte globale rigide (une droite), le réseau de neurones combine des fonctions non-linéaires pour modeler une courbe au plus près de la complexité des données réelles.
 2. **Le piège de la complexité (Overfitting)** : Si l'on avait donné une architecture démesurée (ex: des centaines de neurones) à ce petit jeu de données bruité, le réseau aurait pu faire du *sur-apprentissage* (apprendre le bruit aléatoire par cœur au lieu de capter la tendance générale du sinus). Tout l'art du Deep Learning réside dans cet équilibre subtil entre la capacité du modèle et la quantité/qualité des données disponibles.
+
+>  **Ressource associée** : Tu peux retrouver et télécharger le notebook complet de ce TP directement sur GitHub : 
+> 👉 <a href="https://github.com/GregoryElBajoury/deep-learning-workshops/blob/main/enonces/ENONCES/tp1_regression.ipynb" target="_blank" rel="noopener noreferrer">Accéder au notebook<code>tp1_regression.ipynb</code></a>
