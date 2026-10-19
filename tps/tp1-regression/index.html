@@ -615,10 +615,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-conclusion-mot-de-la-fin" class="md-nav__link">
+  <a href="#7-etape-9-experience-combien-de-neurones-faut-il" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Conclusion &amp; Mot de la fin
+        7. Étape 9 — Expérience : Combien de neurones faut-il ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Étape 9 — Expérience : Combien de neurones faut-il ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-protocole-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le protocole expérimental
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-conclusion-mot-de-la-fin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Conclusion &amp; Mot de la fin
       
     </span>
   </a>
@@ -1086,10 +1114,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-conclusion-mot-de-la-fin" class="md-nav__link">
+  <a href="#7-etape-9-experience-combien-de-neurones-faut-il" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Conclusion &amp; Mot de la fin
+        7. Étape 9 — Expérience : Combien de neurones faut-il ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Étape 9 — Expérience : Combien de neurones faut-il ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-protocole-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le protocole expérimental
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-conclusion-mot-de-la-fin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Conclusion &amp; Mot de la fin
       
     </span>
   </a>
@@ -1286,12 +1342,69 @@
 </code></pre></div>
 <img alt="Résultat" src="../../assets/img5.png" /></p>
 <hr />
-<h2 id="7-conclusion-mot-de-la-fin">7. Conclusion &amp; Mot de la fin</h2>
+<hr />
+<h2 id="7-etape-9-experience-combien-de-neurones-faut-il">7. Étape 9 — Expérience : Combien de neurones faut-il ?</h2>
+<p>Un réseau trop petit ne peut pas suivre la courbe : c'est le <strong>sous-apprentissage</strong> (<em>underfitting</em>). Mesurons-le en faisant varier le nombre de neurones dans une unique couche cachée.</p>
+<h3 id="le-protocole-experimental">Le protocole expérimental</h3>
+<p>Pour des réseaux à une seule couche cachée de <strong>1, 4, 32 puis 256 neurones</strong> (avec 200 epochs, un batch size de 32, et sans validation), on calcule le score <span class="arithmatex">\(R^2\)</span> sur le jeu de test et on stocke le tout dans un dictionnaire <code>resultats</code>[cite: 9].</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">resultats</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+
+<span class="n">neurones_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">neurones_list</span><span class="p">):</span>
+    <span class="c1"># Fixer la graine à chaque tour pour comparer à armes égales</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+    <span class="c1"># Construction dynamique du modèle avec 'n' neurones</span>
+    <span class="n">modele_exp</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,)),</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">),</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">])</span>
+
+    <span class="n">modele_exp</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"adam"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">"mse"</span><span class="p">)</span>
+
+    <span class="c1"># Entraînement (200 epochs, sans validation)</span>
+    <span class="n">modele_exp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Évaluation sur le test</span>
+    <span class="n">y_pred_exp</span> <span class="o">=</span> <span class="n">modele_exp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">score_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_exp</span><span class="p">)</span>
+    <span class="n">resultats</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">score_r2</span>
+
+    <span class="c1"># Traçage des courbes côte à côte</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"test"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">)</span>
+
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">modele_exp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"réseau"</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> neurone(s)</span><span class="se">\n</span><span class="s2">R² = </span><span class="si">{</span><span class="n">score_r2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper left"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Dictionnaire des résultats (R²) :"</span><span class="p">,</span> <span class="n">resultats</span><span class="p">)</span>
+</code></pre></div>
+<img alt="Résultat" src="../../assets/img7.png" /></p>
+<p><strong>Analyse des graphiques obtenus</strong> :</p>
+<ul>
+<li><strong>1 neurone</strong> (<span class="arithmatex">\(R^2 \approx 0.59\)</span>) : Le réseau se résume à deux morceaux de droites assemblés (effet ReLU). C'est beaucoup trop simple pour épouser la vague sinusoïdale : on observe un net <strong>sous-apprentissage</strong>.</li>
+<li><strong>4 neurones</strong> (<span class="arithmatex">\(R^2 \approx 0.86\)</span>) : La courbe commence à s'articuler et à suivre grossièrement la forme générale.</li>
+<li><strong>32 &amp; 256 neurones</strong> (<span class="arithmatex">\(R^2 \approx 0.93\)</span>) : Le réseau dispose de suffisamment de segments linéaires combinés pour sculpter une courbe fluide qui épouse parfaitement la tendance des données. Au-delà, ajouter encore plus de neurones (256) n'apporte plus de gain significatif sur ce type de signal simple.</li>
+</ul>
+<h2 id="8-conclusion-mot-de-la-fin">8. Conclusion &amp; Mot de la fin</h2>
 <p>Ce TP illustre à merveille le changement de paradigme entre les statistiques traditionnelles et le Deep Learning :</p>
 <ol>
 <li><strong>De la ligne globale au sur-mesure local</strong> : Alors qu'une régression linéaire cherche une contrainte globale rigide (une droite), le réseau de neurones combine des fonctions non-linéaires pour modeler une courbe au plus près de la complexité des données réelles.</li>
 <li><strong>Le piège de la complexité (Overfitting)</strong> : Si l'on avait donné une architecture démesurée (ex: des centaines de neurones) à ce petit jeu de données bruité, le réseau aurait pu faire du <em>sur-apprentissage</em> (apprendre le bruit aléatoire par cœur au lieu de capter la tendance générale du sinus). Tout l'art du Deep Learning réside dans cet équilibre subtil entre la capacité du modèle et la quantité/qualité des données disponibles.</li>
 </ol>
+<blockquote>
+<p><strong>Ressource associée</strong> : Tu peux retrouver et télécharger le notebook complet de ce TP directement sur GitHub : 
+👉 <a href="https://github.com/GregoryElBajoury/deep-learning-workshops/blob/main/enonces/ENONCES/tp1_regression.ipynb" target="_blank" rel="noopener noreferrer">Accéder au notebook<code>tp1_regression.ipynb</code></a></p>
+</blockquote>
 
 
 
