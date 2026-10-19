@@ -16,6 +16,8 @@
         <link rel="prev" href="../..">
       
       
+        <link rel="next" href="../tp2-classification/">
+      
       
         
       
@@ -736,7 +738,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tp2-classification.md" class="md-nav__link">
+      <a href="../tp2-classification/" class="md-nav__link">
         
   
   
@@ -1380,14 +1382,20 @@
 <h3 id="les-specificites-dun-reseau-de-regression">Les spécificités d'un réseau de régression</h3>
 <p>Contrairement à la classification binaire (où la dernière couche utilise une fonction d'activation <code>sigmoid</code> pour forcer la sortie entre 0 et 1) :</p>
 <ol>
-<li><strong>Pas d'activation sur la dernière couche</strong> : La couche de sortie comporte un seul neurone <strong>sans fonction d'activation</strong>, car elle doit pouvoir prédire <em>n'importe quel nombre réel</em> (positif ou négatif).</li>
 <li>
-<p><strong>La fonction de perte (Loss) : La MSE (Mean Squared Error)</strong> :</p>
-<p><strong>Éclairage théorique</strong> : On calcule la moyenne des carrés des écarts entre les valeurs réelles et les prédictions. Élever au carré pénalise très fortement les grosses erreurs, poussant le réseau à se corriger rapidement.</p>
+<p><strong>Pas d'activation sur la dernière couche</strong> : La couche de sortie comporte un seul neurone <strong>sans fonction d'activation</strong>, car elle doit pouvoir prédire <em>n'importe quel nombre réel</em> (positif ou négatif).</p>
 </li>
 <li>
-<p><strong>La métrique : La MAE (Mean Absolute Error)</strong> :</p>
-<p>Contrairement à la MSE, la MAE mesure l'erreur absolue moyenne (sans mise au carré), ce qui est beaucoup plus intuitif à interpréter directement dans l'unité de la variable cible <span class="arithmatex">\(y\)</span>.</p>
+<p><strong>La fonction de perte (Loss) : La MSE (Mean Squared Error)</strong> :</p>
+<ul>
+<li><strong>Éclairage théorique</strong> : On calcule la moyenne des carrés des écarts entre les valeurs réelles et les prédictions. Élever au carré pénalise très fortement les grosses erreurs, poussant le réseau à se corriger rapidement.</li>
+</ul>
+</li>
+<li>
+<p><strong>La métrique MAE (Mean Absolute Error)</strong> :</p>
+<ul>
+<li>Contrairement à la MSE, la MAE mesure l'erreur absolue moyenne (sans mise au carré), ce qui est beaucoup plus intuitif à interpréter directement dans l'unité de la variable cible <span class="arithmatex">\(y\)</span>.</li>
+</ul>
 </li>
 </ol>
 <h3 id="larme-secrete-la-fonction-dactivation-relu">L'arme secrète : La fonction d'activation ReLU</h3>
@@ -1662,7 +1670,7 @@
 <li><strong>Le piège de la complexité (Overfitting)</strong> : Si l'on avait donné une architecture démesurée (ex: des centaines de neurones) à ce petit jeu de données bruité, le réseau aurait pu faire du <em>sur-apprentissage</em> (apprendre le bruit aléatoire par cœur au lieu de capter la tendance générale du sinus). Tout l'art du Deep Learning réside dans cet équilibre subtil entre la capacité du modèle et la quantité/qualité des données disponibles.</li>
 </ol>
 <blockquote>
-<p><strong>Ressource associée</strong> : Tu peux retrouver et télécharger le notebook complet de ce TP directement sur GitHub : 
+<p><strong>Ressource associée</strong> : Tu peux retrouver et télécharger le notebook complet de ce TP directement sur GitHub :
 👉 <a href="https://github.com/GregoryElBajoury/deep-learning-workshops/blob/main/enonces/ENONCES/tp1_regression.ipynb" target="_blank" rel="noopener noreferrer">Accéder au notebook<code>tp1_regression.ipynb</code></a></p>
 </blockquote>
 
