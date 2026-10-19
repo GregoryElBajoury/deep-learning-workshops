@@ -643,10 +643,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-conclusion-mot-de-la-fin" class="md-nav__link">
+  <a href="#8-etape-10-experience-trop-peu-de-donnees-surapprentissage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Conclusion &amp; Mot de la fin
+        8. Étape 10 — Expérience : Trop peu de données (Surapprentissage)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Étape 10 — Expérience : Trop peu de données (Surapprentissage)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-protocole-experimental_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le protocole expérimental
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-etape-11-sur-des-donnees-reelles-la-progression-du-diabete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Étape 11 — Sur des données réelles : La progression du diabète
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Étape 11 — Sur des données réelles : La progression du diabète">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-protocole-experimental_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le protocole expérimental
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ce-quil-faut-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce qu'il faut retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-conclusion-mot-de-la-fin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Conclusion &amp; Mot de la fin
       
     </span>
   </a>
@@ -1142,10 +1209,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-conclusion-mot-de-la-fin" class="md-nav__link">
+  <a href="#8-etape-10-experience-trop-peu-de-donnees-surapprentissage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Conclusion &amp; Mot de la fin
+        8. Étape 10 — Expérience : Trop peu de données (Surapprentissage)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Étape 10 — Expérience : Trop peu de données (Surapprentissage)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-protocole-experimental_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le protocole expérimental
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-etape-11-sur-des-donnees-reelles-la-progression-du-diabete" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Étape 11 — Sur des données réelles : La progression du diabète
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Étape 11 — Sur des données réelles : La progression du diabète">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-protocole-experimental_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le protocole expérimental
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ce-quil-faut-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce qu'il faut retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-conclusion-mot-de-la-fin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Conclusion &amp; Mot de la fin
       
     </span>
   </a>
@@ -1395,7 +1529,127 @@
 <li><strong>4 neurones</strong> (<span class="arithmatex">\(R^2 \approx 0.86\)</span>) : La courbe commence à s'articuler et à suivre grossièrement la forme générale.</li>
 <li><strong>32 &amp; 256 neurones</strong> (<span class="arithmatex">\(R^2 \approx 0.93\)</span>) : Le réseau dispose de suffisamment de segments linéaires combinés pour sculpter une courbe fluide qui épouse parfaitement la tendance des données. Au-delà, ajouter encore plus de neurones (256) n'apporte plus de gain significatif sur ce type de signal simple.</li>
 </ul>
-<h2 id="8-conclusion-mot-de-la-fin">8. Conclusion &amp; Mot de la fin</h2>
+<h2 id="8-etape-10-experience-trop-peu-de-donnees-surapprentissage">8. Étape 10 — Expérience : Trop peu de données (Surapprentissage)</h2>
+<p>Cette fois c'est l'inverse : on utilise un <strong>gros réseau</strong> (2 couches de 256 neurones) mais avec <strong>très peu de données</strong>. Il peut alors mémoriser chaque point, bruit compris : c'est le <strong>surapprentissage</strong> (<em>overfitting</em>)[cite: 10].</p>
+<h3 id="le-protocole-experimental_1">Le protocole expérimental</h3>
+<p>N'utilisez que les <strong>15 premiers points</strong> de <code>x_train</code> / <code>y_train</code>. Entraînez le gros réseau <strong>500 epochs</strong> (batch 8). Calculez <code>r2_train</code> (sur ces 15 points) et <code>r2_test</code> (sur tout le test), puis tracez la courbe prédite[cite: 10].</p>
+<blockquote>
+<p>💡 <strong>Indice</strong> : Découpez avec <code>x_train[:15]</code>. Comparez les deux <span class="arithmatex">\(R^2\)</span> : que valent-ils chacun ?[cite: 10]</p>
+</blockquote>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># Calcul de r2_train et r2_test avec seulement 15 points</span>
+<span class="n">x_train_15</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[:</span><span class="mi">15</span><span class="p">]</span>
+<span class="n">y_train_15</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">15</span><span class="p">]</span>
+
+<span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">modele_overfit</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,)),</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">),</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">),</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">modele_overfit</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"adam"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">"mse"</span><span class="p">)</span>
+<span class="n">modele_overfit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_15</span><span class="p">,</span> <span class="n">y_train_15</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">y_pred_train_15</span> <span class="o">=</span> <span class="n">modele_overfit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train_15</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">r2_train</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train_15</span><span class="p">,</span> <span class="n">y_pred_train_15</span><span class="p">)</span>
+
+<span class="n">y_pred_test</span> <span class="o">=</span> <span class="n">modele_overfit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">r2_test</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"R² sur les 15 points d'entraînement : </span><span class="si">{</span><span class="n">r2_train</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"R² sur le test : </span><span class="si">{</span><span class="n">r2_test</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># Traçage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_train_15</span><span class="p">,</span> <span class="n">y_train_15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"green"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"15 points d'entraînement"</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"blue"</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"points de test"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">modele_overfit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"réseau (surapprentissage)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="s2">"--"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"vraie courbe"</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Surapprentissage | R² train = </span><span class="si">{</span><span class="n">r2_train</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> — R² test = </span><span class="si">{</span><span class="n">r2_test</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<img alt="Résultat" src="../../assets/img8.png" /></p>
+<p>❓ <strong>Question</strong> : Comparez <span class="arithmatex">\(R^2\)</span> d'entraînement et <span class="arithmatex">\(R^2\)</span> de test. Que vous dit l'écart ? Que faudrait-il pour le réduire ?<br />
+<em>Réponse</em> : Le <span class="arithmatex">\(R^2\)</span> d'entraînement (0.97) est supérieur au <span class="arithmatex">\(R^2\)</span> de test (0.79), ce qui met en évidence un surapprentissage : le modèle a mémorisé les points d'entraînement spécifiques au lieu de généraliser. Pour réduire cet écart, il faudrait augmenter la quantité de données d'entraînement ou intégrer des techniques de régularisation.  </p>
+<hr />
+<h2 id="9-etape-11-sur-des-donnees-reelles-la-progression-du-diabete">9. Étape 11 — Sur des données réelles : La progression du diabète</h2>
+<p>Reprenons toute la démarche sur un vrai jeu de données : <code>load_diabetes</code> (442 patients, 10 mesures médicales, cible = indice de progression de la maladie). Ici les 10 colonnes ont des échelles différentes : il faut les <strong>mettre à l'échelle</strong>, en calculant la moyenne et l'écart-type <strong>sur l'apprentissage seul</strong>.  </p>
+<h3 id="le-protocole-experimental_2">Le protocole expérimental</h3>
+<ol>
+<li>Découpez (20 % de test, <code>random_state=42</code>) vers <code>Xd_train</code>, <code>Xd_test</code>, <code>yd_train</code>, <code>yd_test</code>.  </li>
+<li>Standardisez (<code>StandardScaler</code> : <code>fit</code> sur train, <code>transform</code> sur train et test).  </li>
+<li>Régression linéaire <span class="arithmatex">\(\rightarrow\)</span> <code>r2_lin_d</code>.  </li>
+<li>Réseau <strong>16 puis 8 neurones</strong>, 150 epochs max, batch 16, validation 20 %, <strong>arrêt précoce</strong> (patience 15, <code>restore_best_weights=True</code>) <span class="arithmatex">\(\rightarrow\)</span> <code>r2_res_d</code>.  </li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_diabetes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">diabetes</span> <span class="o">=</span> <span class="n">load_diabetes</span><span class="p">()</span>
+<span class="n">Xd_d</span><span class="p">,</span> <span class="n">yd_d</span> <span class="o">=</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">diabetes</span><span class="o">.</span><span class="n">target</span>
+
+<span class="n">Xd_train</span><span class="p">,</span> <span class="n">Xd_test</span><span class="p">,</span> <span class="n">yd_train</span><span class="p">,</span> <span class="n">yd_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">Xd_d</span><span class="p">,</span> <span class="n">yd_d</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">Xd_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Xd_train</span><span class="p">)</span>
+<span class="n">Xd_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xd_test</span><span class="p">)</span>
+
+<span class="c1"># 1. Modèle linéaire de référence</span>
+<span class="n">modele_lin_d</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">modele_lin_d</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xd_train_scaled</span><span class="p">,</span> <span class="n">yd_train</span><span class="p">)</span>
+<span class="n">yd_pred_lin</span> <span class="o">=</span> <span class="n">modele_lin_d</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xd_test_scaled</span><span class="p">)</span>
+<span class="n">r2_lin_d</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">yd_test</span><span class="p">,</span> <span class="n">yd_pred_lin</span><span class="p">)</span>
+
+<span class="c1"># 2. Réseau de neurones avec EarlyStopping</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">set_random_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">modele_res_d</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">Xd_train_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)),</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">),</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">),</span>
+    <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Sortie unique pour la régression</span>
+<span class="p">])</span>
+
+<span class="n">modele_res_d</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"adam"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">"mse"</span><span class="p">)</span>
+
+<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
+    <span class="n">monitor</span><span class="o">=</span><span class="s2">"val_loss"</span><span class="p">,</span>
+    <span class="n">patience</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">modele_res_d</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">Xd_train_scaled</span><span class="p">,</span> <span class="n">yd_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">early_stopping</span><span class="p">],</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="n">yd_pred_res</span> <span class="o">=</span> <span class="n">modele_res_d</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xd_test_scaled</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">r2_res_d</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">yd_test</span><span class="p">,</span> <span class="n">yd_pred_res</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Score R² de la régression linéaire : </span><span class="si">{</span><span class="n">r2_lin_d</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Score R² du réseau de neurones : </span><span class="si">{</span><span class="n">r2_res_d</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<img alt="Résultat" src="../../assets/img9.png" /></p>
+<p><strong>Question</strong> : Le réseau bat-il nettement la régression linéaire ? Pourquoi l'avantage est-il faible sur ce jeu ?</p>
+<p><em>Réponse</em> : Non, le réseau ne bat pas nettement la régression linéaire, les scores <span class="arithmatex">\(R^2\)</span> étant très proches (environ 0.45 contre 0.46). Cet avantage minime s'explique par le fait que les relations dans ce jeu de données médical sont en grande partie linéaires, et que la taille restreinte de l'échantillon ne permet pas à un réseau de neurones de surperformer massivement.</p>
+<hr />
+<h2 id="ce-quil-faut-retenir">Ce qu'il faut retenir</h2>
+<ul>
+<li><strong>Régression</strong> = prédire un nombre : sortie sans activation, perte MSE, mesures MAE / RMSE / <span class="arithmatex">\(R^2\)</span>.  </li>
+<li>Le <strong><span class="arithmatex">\(R^2\)</span></strong> se lit par rapport à une référence : <span class="arithmatex">\(0\)</span> = pas mieux que la moyenne, <span class="arithmatex">\(1\)</span> = parfait. Comparez <strong>toujours</strong> à une méthode simple.  </li>
+<li><strong>Trop petit</strong> = sous-apprentissage ; <strong>trop gros pour trop peu de données</strong> = surapprentissage.</li>
+</ul>
+<h2 id="10-conclusion-mot-de-la-fin">10. Conclusion &amp; Mot de la fin</h2>
 <p>Ce TP illustre à merveille le changement de paradigme entre les statistiques traditionnelles et le Deep Learning :</p>
 <ol>
 <li><strong>De la ligne globale au sur-mesure local</strong> : Alors qu'une régression linéaire cherche une contrainte globale rigide (une droite), le réseau de neurones combine des fonctions non-linéaires pour modeler une courbe au plus près de la complexité des données réelles.</li>
