@@ -1378,12 +1378,14 @@
 <hr />
 <h2 id="4-etape-4-5-conception-et-entrainement-du-reseau-de-neurones">4. Étape 4 &amp; 5 — Conception et entraînement du Réseau de Neurones</h2>
 <h3 id="les-specificites-dun-reseau-de-regression">Les spécificités d'un réseau de régression</h3>
-<p>Contrairement à la classification binaire (où la dernière couche utilise une fonction d'activation <code>sigmoid</code> pour forcer la sortie entre 0 et 1) :
-1. <strong>Pas d'activation sur la dernière couche</strong> : La couche de sortie comporte un seul neurone <strong>sans fonction d'activation</strong>, car elle doit pouvoir prédire <em>n'importe quel nombre réel</em> (positif ou négatif).
-2. <strong>La fonction de perte (Loss) : La MSE (Mean Squared Error)</strong> : 
-   *  <strong>Éclairage théorique</strong> : On calcule la moyenne des carrés des écarts entre les valeurs réelles et les prédictions. Élever au carré pénalise très fortement les grosses erreurs, poussant le réseau à se corriger rapidement.
-3. <strong>La métrique : La MAE (Mean Absolute Error)</strong> : 
-   * Contrairement à la MSE, la MAE mesure l'erreur absolue moyenne (sans mise au carré), ce qui est beaucoup plus intuitif à interpréter directement dans l'unité de la variable cible <code>y</code>.</p>
+<p>Contrairement à la classification binaire (où la dernière couche utilise une fonction d'activation <code>sigmoid</code> pour forcer la sortie entre 0 et 1) :</p>
+<ol>
+<li><strong>Pas d'activation sur la dernière couche</strong> : La couche de sortie comporte un seul neurone <strong>sans fonction d'activation</strong>, car elle doit pouvoir prédire <em>n'importe quel nombre réel</em> (positif ou négatif).</li>
+<li><strong>La fonction de perte (Loss) : La MSE (Mean Squared Error)</strong> : </li>
+<li><strong>Éclairage théorique</strong> : On calcule la moyenne des carrés des écarts entre les valeurs réelles et les prédictions. Élever au carré pénalise très fortement les grosses erreurs, poussant le réseau à se corriger rapidement.</li>
+<li><strong>La métrique : La MAE (Mean Absolute Error)</strong> : </li>
+<li>Contrairement à la MSE, la MAE mesure l'erreur absolue moyenne (sans mise au carré), ce qui est beaucoup plus intuitif à interpréter directement dans l'unité de la variable cible <code>y</code>.</li>
+</ol>
 <h3 id="larme-secrete-la-fonction-dactivation-relu">L'arme secrète : La fonction d'activation ReLU</h3>
 <p>Dans les couches cachées, l'utilisation de <code>activation="relu"</code> (Rectified Linear Unit, <span class="arithmatex">\(f(x) = \max(0, x)\)</span>) est fondamentale. C'est elle qui casse la linéarité : en combinant des morceaux de droites, le réseau parvient à "sculpter" une courbe capable d'épouser le signal sinusoïdal.</p>
 <h3 id="construction-du-modele-dans-keras">Construction du modèle dans Keras</h3>
