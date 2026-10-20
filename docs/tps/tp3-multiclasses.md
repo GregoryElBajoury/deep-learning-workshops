@@ -420,32 +420,40 @@ plt.show()
 #### 1. Les erreurs vous paraissent-elles raisonnables ? Un humain se tromperait-il sur ces images ?
 Oui, ces erreurs sont tout à fait raisonnables. En raison de la très faible résolution de $8 \times 8$ pixels et des variations d'écriture d'une personne à l'autre, certains chiffres sont particulièrement ambigus. Un être humain pourrait lui aussi facilement hésiter ou se tromper sur ces échantillons de basse qualité.
 
-#### 2. Pourquoi une sortie `softmax` plutôt qu'une sigmoïde ici ? Que change `sparse_categorical_crossentropy` par rapport à `binary_crossentropy` ?
-On utilise `softmax` car le problème comporte **10 classes différentes** : elle permet de distribuer la probabilité sur les 10 chiffres de façon à ce que le total fasse exactement 100 %, contrairement à la sigmoïde qui se limite strictement à un choix binaire (oui/non). De même, `sparse_categorical_crossentropy` sert de fonction de perte adaptée à ces multiples options avec des étiquettes sous forme d'entiers, là où la version `binary` ne gère que deux issues.
+#### 2.a Pourquoi une sortie `softmax` plutôt qu'une sigmoïde ici ? 
+#### 2.b Que change `sparse_categorical_crossentropy` par rapport à `binary_crossentropy` ?
+
+On utilise `softmax` car le problème comporte **10 classes différentes** : elle permet de distribuer la probabilité sur les 10 chiffres de façon à ce que le total fasse exactement 100 %, contrairement à la sigmoïde qui se limite strictement à un choix binaire (oui/non).
+
+De même, `sparse_categorical_crossentropy` sert de fonction de perte adaptée à ces multiples options avec des étiquettes sous forme d'entiers, là où la version `binary` ne gère que deux issues.
 
 ---
 
 ##  Ce qu'il faut retenir
 
 **Classification multiclasse** : 
+
 * Couche de sortie à **N neurones** (autant que de classes, soit 10 ici) avec une fonction d'activation **`softmax`** (qui produit des probabilités pour chaque classe dont la somme totale fait toujours $1$).
 * Fonction de perte **`sparse_categorical_crossentropy`**, idéale pour mesurer l'erreur sur plusieurs classes avec des étiquettes fournies sous forme d'entiers simples.
 
 ---
 
 **Méthodologie & Reproductibilité** : 
+
 * Toujours fixer la graine aléatoire (`keras.utils.set_random_seed(42)`) pour garantir la reproductibilité de l'initialisation du réseau et des résultats d'entraînement.
 * Toujours effectuer un découpage stratifié (*stratified split*) pour conserver des proportions équilibrées de chaque chiffre dans les jeux d'entraînement et de test.
 
 ---
 
-**Décision et Analyse des erreurs** : 
+**Décision et Analyse des erreurs** :
+
 * La réponse finale du réseau s'obtient en sélectionnant la classe de plus forte probabilité grâce à **`argmax`**.
 * La **matrice de confusion** (visualisée sous forme de carte thermique) permet d'aller au-delà de la simple précision globale (*accuracy*) pour identifier précisément les confusions commises par le modèle (ex: confondre un '8' avec un '1').
 
 ---
 
 **Aplatissement et Limites des réseaux denses** : 
+
 * Pour injecter une image en 2D (comme nos grilles de $8 \times 8$ pixels) dans un réseau dense, il est nécessaire de l'**aplatir** (*flatten*) en un vecteur de 64 dimensions, ce qui entraîne la perte de la structure spatiale native — une limitation majeure que les réseaux de convolution (CNN) viendront résoudre au **TP4**.
 
 ---
